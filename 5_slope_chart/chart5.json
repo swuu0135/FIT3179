@@ -1,0 +1,48 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "width":400,
+    "height": 300,
+    "title": "Parks Australia Vistor Change by Parks",
+    "data": {
+        "url": "5_slope_chart/year_on_year_number_visits_by_park.csv"
+    },
+    "transform": [
+        {
+            "fold": ["2020-21", "2022-23", "2023-24", "2024-25"],
+            "as": ["Year", "Vistors"]
+        }
+    ],
+    "encoding": {
+        "x": {
+            "field": "Year", 
+            "type": "ordinal", 
+            "axis": {
+                "labelAngle": 0
+            }
+            
+        },
+        "y": {
+            "field": "Vistors", 
+            "type": "quantitative"
+        }, 
+        "color": {
+            "field": "Park", 
+            "type": "nominal"
+        }
+
+    },
+
+    "layer": [
+        {
+            "mark": {
+                "type": "line"
+            }
+        },
+        {
+            "mark": {
+                "type": "point"
+            }
+        }
+        
+    ]
+}

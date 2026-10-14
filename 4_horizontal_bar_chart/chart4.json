@@ -1,0 +1,19 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "mark": "bar",
+    "data": {
+        "url": "4_horizontal_bar_chart/most_visited_parks.csv"
+    },
+    "encoding": {
+        "x": {
+            "field": "2024/25 visits",
+            "type": "quantitative",
+            "title": "visits"
+        },
+        "y": {
+            "field": "Park",
+            "type": "nominal",
+            "title": "Park"
+        }
+    }
+}

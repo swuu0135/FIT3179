@@ -1,0 +1,49 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "title": "Total Domestic Trips in Australia",
+    "width": 800, 
+    "height": 400, 
+    "projection": {"type": "mercator"}, 
+    "layer":[
+        {"data": {
+            "url": "2_choropleth_map/ne_10m_admin_1_states_provinces.json",
+            "format": {"type": "topojson", "feature": "australia_states"}},
+        "mark": {
+            "type": "geoshape",
+            "fill": "lightgray",
+            "stroke": "white",
+            "strokeWidth": 1
+        }},
+        {"data": {
+            "url": "2_choropleth_map/ne_10m_admin_1_states_provinces.json",
+            "format": {"type": "topojson", "feature": "australia_states"}},
+        "mark": {
+            "type": "geoshape"
+        },
+        "transform":[{
+            "lookup": "properties.name", 
+            "from":{
+                "data":{
+                    "url": "2_choropleth_map/australia_domestic_trips_2025.csv",
+                    "format":{"type": "csv"}
+                }, 
+                "key": "State_Territory",
+                "fields": ["Percentage_Share","Trips_Thousands"]
+            }
+        }],
+        "encoding": {
+            "color": {
+                "field": "Percentage_Share", 
+                "type": "quantitative"
+            },
+            "tooltip": [
+                {"field": "properties.name", "type": "nominal", "title": "State/Territory"},
+                {"field": "Percentage_Share", "type": "quantitative", "title": "Share (%)"},
+                {"field": "Trips_Thousands", "type": "quantitative", "title": "Trips"}
+                
+            ]
+        }
+    }]
+
+    
+}

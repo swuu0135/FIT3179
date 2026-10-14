@@ -1,0 +1,62 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "width":400,
+    "height": 300,
+    "title": "Tourism Consumption in Australia",
+    "data": {
+        "url": "1_heat_map/tourism_consumption.csv"
+    },
+    "mark": {
+        "type": "rect", 
+        "stroke": "white",
+        "strokeWidth": 1
+    },
+    "encoding": {
+        "y": {
+            "field":"Category", 
+            "type": "nominal",
+            "row": {"field": "Direction", "type": "nominal"},
+            "axis": {
+                "labelLimit": 0,
+                "title": ""
+            }
+        
+
+        },
+        "x": {
+            "field":"Year", 
+            "type": "ordinal",
+            "axis": {
+                "labelAngle": 0
+            }
+        },
+        "color": {
+            "field": "Value_m", 
+            "type": "quantitative", 
+            "scale": {"$schema": "blues"},
+            "legend":{
+                "title": "Consumption"
+            }
+        },
+        "tooltip": [
+            {
+                "field": "Category", 
+                "type": "nominal"
+            },
+            {
+                "field": "Direction", 
+                "type": "nominal"
+            },
+            {
+                "field": "Year", 
+                "type": "ordinal"
+            },
+            {
+                "field": "Value_m",
+                "type": "quantitative",
+                "title": "Consumption"
+            }
+        ]
+
+    }
+}
