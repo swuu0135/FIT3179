@@ -1,0 +1,53 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "title": "Tourism shares",
+    "width":400,
+    "height": 300,
+    "data": {
+        "url": "8_lollipop_chart/tourism_state_shares.csv"
+    },
+    "encoding": {
+        "x": {
+            "field": "Tourism_Share_Percent",
+            "type": "quantitative",
+            "title": "Contribution Share"
+        },
+        "y": {
+            "field": "State",
+            "type": "nominal"
+        }
+    },
+    "layer": [
+        {
+            "mark": {
+                "type": "rule",
+                "color": "#cbd5e1",
+                "size": 2
+            }
+        },
+        {
+            "mark": {
+                "type": "circle",
+                "size": 180,
+                "color": "#0ea5e9"
+            },
+            "encoding": {
+                "tooltip": [
+                    {
+                        "field": "State",
+                        "type": "nominal"
+                    },
+                    {
+                        "field": "Tourism_Share_Percent",
+                        "type": "quantitative",
+                        "title": "Tourism Share (%)"
+                    }
+                ],
+                "color": {
+                    "field": "State",
+                    "type": "nominal"
+                }
+            }
+        }
+    ]
+}

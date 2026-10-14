@@ -1,0 +1,31 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "title": "Great Barrier Reef Visits",
+    "width":500,
+    "height": 300,
+    "data": {
+        "url": "3_line_chart/GBRMP Visitations-All.csv"
+    },
+    "transform":[{
+        "calculate": "datum.Year + ' ' + datum.Quarter ", 
+        "as": "Timeline"
+    }],
+   
+    "mark": {"type": "line", "point": true},
+    "encoding": {
+        "x": {
+            "field": "Timeline", 
+            "type": "nominal",
+            "sort": ["2019 Jan-Mar", "2019 Apr-Jun", "2019 Jul-Sep", "2019 Oct-Dec", "2020 Jan-Mar", "2020 Apr-Jun", "2020 Jul-Sep", "2020 Oct-Dec"]
+            
+        },
+        "y": {
+            "field": "Total Visits",
+            "type": "quantitative"
+        },
+        "tooltip": [
+            {"field": "Timeline", "type":"nominal"},
+            {"field": "Total Visits", "type": "quantitative"}
+        ]
+    }
+}
