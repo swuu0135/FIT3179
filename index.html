@@ -19,7 +19,7 @@
         .chart-container {
         display: flex;
         flex-direction: row;
-        gap: 5px;
+        /* gap: 5px; */
         justify-content: flex-start;
         align-items: flex-start;
         }
@@ -72,9 +72,11 @@
     <div id="vis5" class="chart-box"></div>
 
     </div>
+    <div id="vis6"></div> 
     <script>
         vegaEmbed('#vis4', '5_slope_chart/chart5.json')
-        vegaEmbed('#vis5', '4_horizontal_bar_chart/chart4.json')
+        vegaEmbed('#vis5', '7_proportional_symbol_map/chart7.json')
+        vegaEmbed('#vis6', '4_horizontal_bar_chart/chart4.json')
     </script>
 </body>
 
