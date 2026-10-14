@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Australia's Nature-Based Activities</title>
+
+    <meta charset="utf-8" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@6.4.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.5.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.3.0"></script>
+
+    <style media="screen">
+        /* Add space between Vega-Embed links  */
+        .vega-actions a {
+            margin-right: 5px;
+        }
+      
+        .chart-container {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Doppio+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        h2 {
+        font-weight: 700;
+        font-family: 'Doppio One', sans-serif;
+        background-color: #009E73;
+        }
+        
+
+        
+    /* Optional: Give each chart wrapper some padding or constraints if needed */
+    .chart-box {
+      flex: 0 1 auto;
+    }
+  </style>
+ 
+</head>
+
+<body>
+    
+    <h1>Australia's Nature-Based Activities</h1>
+    <h2>Introduction</h2>
+    <p> Australia is known for its multiculturalism and is a major desination for tourism. Below the charts show the reasons for tourism and what percentage of tourism does each state get.</p>
+    <div class="chart-container">
+    <div id="vis1" class="chart-box"></div>
+    <div id="vis2" class="chart-box"></div>
+
+    </div>
+
+    <script>
+        vegaEmbed('#vis1', '1_heat_map/chart1.json')
+        vegaEmbed('#vis2', '2_choropleth_map/chart2.json')
+
+    </script>
+    <h2>What are the nature based activities in Australia?</h2>
+    <p> Let's focus on the nature based activities that tourists typically engage in. Below the charts show the various activities that have been done
+        between the years 2014- 2024.
+    </p>
+    <div id="vis3"></div>
+    <script> 
+        vegaEmbed('#vis3', '6_bump_chart/chart6.json')
+    </script>
+    <h2> Parks in Australia </h2>
+    <p>There are many parks in Australia that people like to go to for their nature based activties</p>
+
+    <div class="chart-container">
+    <div id="vis4" class="chart-box"></div>
+    <div id="vis5" class="chart-box"></div>
+
+    </div>
+    <script>
+        vegaEmbed('#vis4', '5_slope_chart/chart5.json')
+        vegaEmbed('#vis5', '4_horizontal_bar_chart/chart4.json')
+    </script>
+</body>
+
+</html>
