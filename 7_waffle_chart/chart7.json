@@ -1,0 +1,92 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Proportion of Australian Park Visits (2024-25)",
+  "width": 320,
+  "height": 320,
+  "padding": {
+    "top": 10,
+    "bottom": 15,
+    "left": 10,
+    "right": 10
+  },
+  "data": {
+    "url": "7_waffle_chart/waffle_grid.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "white",
+        "strokeWidth": 2,
+        "cornerRadius": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "Column",
+          "type": "ordinal",
+          "axis": null
+        },
+        "y": {
+          "field": "Row",
+          "type": "ordinal",
+          "axis": null,
+          "sort": "descending"
+        },
+        "color": {
+          "field": "Park",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Australian National Botanic Gardens",
+              "Uluru-Kata Tjuta National Park",
+              "Booderee National Park",
+              "Kakadu National Park",
+              "Norfolk Island National Park",
+              "Christmas Island National Park"
+            ],
+            "range": [
+              "#2b5c8f",
+              "#d95f02",
+              "#7570b3",
+              "#e7298a",
+              "#66a61e",
+              "#e6ab02"
+            ]
+          },
+          "legend": {
+            "title": "National Park",
+            "orient": "right",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "labelLimit": 300
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Park",
+            "type": "nominal",
+            "title": "Park"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "x": 400,
+        "y": 300,
+        "fontSize": 30
+      },
+      "encoding": {
+        "text": {
+          "value": "43%"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": null
+    }
+  }
+}

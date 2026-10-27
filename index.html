@@ -1,107 +1,449 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <title>Australia's Nature-Based Activities</title>
+    <title>Australia's Nature-Based Tourism</title>
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
-    <meta charset="utf-8" />
+    <!-- Import pure.css -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+        integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://cdn.jsdelivr.net/npm/vega@6.4.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.5.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.3.0"></script>
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,800&display=swap" rel="stylesheet">
 
-    <style media="screen">
-        /* Add space between Vega-Embed links  */
-        .vega-actions a {
-            margin-right: 5px;
-        }
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="styles.css" media="all">
 
-        .chart-container {
-            display: flex;
-            flex-direction: row;
-            /* gap: 5px; */
-            justify-content: flex-start;
-            align-items: flex-start;
-        }
-
-        @import url('https://fonts.googleapis.com/css2?family=Doppio+One&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-        h1 {
-            font-size: 50px;
-            font-weight: 700px;
-        }
-
-        h2 {
-            font-family: 'Doppio One', sans-serif;
-            background-color: #009E73;
-        }
-
-
-
-        /* Optional: Give each chart wrapper some padding or constraints if needed */
-        .chart-box {
-            flex: 0 1 auto;
-        }
-    </style>
 
 </head>
 
 <body>
 
-    <h1>Australia's Nature-Based Activities</h1>
-    <h2>Introduction</h2>
-    <p> Australia is known for its multiculturalism and is a major desination for tourism. Below the charts show the
-        reasons for tourism and what percentage of tourism does each state get.</p>
-    <div class="chart-container">
-        <div id="vis1" class="chart-box"></div>
-        <div id="vis2" class="chart-box"></div>
+    <div class="page">
 
-    </div>
-    <div id="vis3"></div>
-
-    <script>
-        vegaEmbed('#vis1', '1_heat_map/chart1.json')
-        vegaEmbed('#vis2', '2_choropleth_map/chart2.json')
-        vegaEmbed('#vis3', '8_lollipop_chart/chart8.json')
-
-    </script>
-    <h2>What are the nature based activities in Australia?</h2>
-    <p> Let's focus on the nature based activities that tourists typically engage in. Below the charts show the various
-        activities that have been done
-        between the years 2014- 2024.
-    </p>
-    <div style="display: flex; align-items: flex-start;gap: 30px;">
-        <div id="vis4"></div>
-        <div style="flex: 1;">
-            <p>
-                This bump chart illustrates the various nature based activities through
-                2014 to 2024, the popularity shifting through the years. Specifically,
-                in 2020 there were less tourists due to the global pandemic.
-            </p>
+        <!-- pure grid group -->
+        <div class="groups">
+            <div class="pure-u-1-1">
+                <h1>Australia's Nature-Based Tourism</h1>
+            </div>
         </div>
-    </div>
+        <!-- end pure grid group -->
 
-    <script>
-        vegaEmbed('#vis4', '6_bump_chart/chart6.json')
-    </script>
-    <h2> Parks in Australia </h2>
-    <p>There are many parks in Australia that people like to go to for their nature based activities</p>
 
-    <div class="chart-container">
-        <div id="vis5" class="chart-box"></div>
-        <div id="vis6" class="chart-box"></div>
 
-    </div>
-    <div class="chart-container">
-        <div id="vis7"></div>
-        <div id="vis8"></div>
-    </div>
-    
-    <script>
-        vegaEmbed('#vis5', '5_slope_chart/chart5.json')
-        vegaEmbed('#vis6', '7_proportional_symbol_map/chart7.json')
-        vegaEmbed('#vis7', '4_horizontal_bar_chart/chart4.json')
-        vegaEmbed('#vis8', '3_line_chart/chart3.json')
+        <!-- pure grid group -->
+        <div class="groups">
+            <div class="pure-g">
+                <div class="pure-u-1-3">
+                    <h3> Introduction</h3>
+                    <p>Australia is wildly known as a popular place for tourism. Every year there are millions of domestic
+                    and international trips across states. These trips can be categorised based on whether it is international 
+                    or domestic and also whether it is a business trip or simply just for holidays. Nature-based tourism is 
+                    part of these numbers of trips made by people as Australia is known for its unique wildlife and ancient landscapes
+                    , but before we look future into that topic let's have a look at the general statistics on tourism in Australia. 
+                    </p>
+                </div>
+
+                <div class="pure-u-2-3">
+                    <div class="css-image1-container"></div>
+                    <div class="description description-right">
+                        <p class="chart-reference">
+                            Source: Image found at <a href="https://media.journeybeyond.com.au/wp-content/uploads/2021/04/HFSA-Hero-11-scaled-e1633393638198.jpg" target="_blank"> Journey Beyond Media Portal</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- end pure grid group -->
+
+            <!-- pure grid group -->
+            <div class="pure-g">
+                <div class="pure-u-1-1">
+                    <p> <strong>State abbreviations used:</strong> 
+                    ACT - Australian Capital Territory | 
+                    NSW - New South Wales | 
+                    NT - Northern Territory | 
+                    QLD - Queensland | 
+                    SA - South Australia | 
+                    TAS - Tasmania | 
+                    VIC - Victoria | 
+                    WA - Western Australia
+                    </p>
+                </div>
+            </div>
+            <!-- end pure grid group -->
+        </div>
+
+
+        <!-- pure grid group -->
+        <div class="groups">
+            <div class="pure-u-1-1">
+                <h2>1. A bit about Tourism in Australia</h2>
+            </div>
+        </div>
+
+        <div class="groups">
+                <div class="pure-g">
+                    <div class="pure-u-1-2">
+                        <div class="description description-left">
+                            <div id="vis2" class="vis-container"></div>
+                                <p class="chart-reference">
+                                    Source: <a href="https://www.abs.gov.au/statistics/economy/national-accounts/tourism-satellite-account/latest-release#data-downloads" target="_blank"> Australian Bureau of Statistics - Tourism Satellite Account</a>
+                                </p>
+                                <p> To better understand the tourism consumption in
+                                Australia, the amount of trips is divided by
+                                states and the percentage share of each is
+                                calculated with reference to the total
+                                amount of trips. <strong> As a result, the map
+                                clearly highlights that New South Wales and Victoria
+                                capture the top two largest shares of domestic travel 
+                                volume nationwide. This is no surprise as these states
+                                contain Australia's top largest cities.</strong>
+                                </p>
+                            </div>
+                        </div>
+                    <div class="pure-u-1-2">
+                        <div class="description description-right">
+                            <div id="vis3" class="vis-container"></div>
+                            <p class="chart-reference">
+                                    Source: <a href="https://www.abs.gov.au/statistics/economy/national-accounts/tourism-satellite-account/latest-release#data-downloads" target="_blank"> Australian Bureau of Statistics - Tourism Satellite Account</a>
+                            </p>
+                            <p> On this side, the chart illustrates the tourism contribution share by Australian states.
+                                It may come as a surprise that although New South Wales captures the largest
+                                percentage share of total domestic trips, Tasmania actually records the highest 
+                                tourism contribution shares, highlighting how vital the tourism industry is to 
+                                its local economy. 
+                            </p>
+                        </div>
+                    </div>
+             <!-- pure grid group -->
+                </div>
+        </div>
+        
+        <div class="groups">
+                <div class="pure-g">
+                    <div class="pure-u-1-3">
+                        <div class="description description-left">
+                            <p> Every year there are people travelling around Australia
+                            either travelling interstate or coming from overseas.
+                            Regardless this contributes to the tourism consumption.
+                            </p>
+                            <p> 
+                            <strong> The heatmap clearly illustrates a near-total collapse 
+                            in consumption during the 2020-2022 pandemic border closures, 
+                            followed by a massive post-pandemic boom led by outbound and household
+                            visitor spending through 2025.
+                            </strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="pure-u-2-3">
+                        <div id="vis1" class="vis-container"></div>
+                        <p class="chart-reference">
+                            Source: <a href="https://www.abs.gov.au/statistics/economy/national-accounts/tourism-satellite-account/latest-release#data-downloads" target="_blank"> Australian Bureau of Statistics - Tourism Satellite Account</a>
+                        </p>
+                    </div>
+                </div>
+         
+
+        <!-- end pure grid group -->
+        </div>
+
+
+       
+
+        <!-- pure grid group -->
+        <div class="groups">
+            <div class="pure-u-1-1">
+                <h2>2. What are the nature based activities in Australia?</h2>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+
+        <div class="groups">
+            <!-- pure grid group -->
+            <div class="pure-g">
+                <div class="pure-u-1-3">
+                    <div class="description description-left">
+                        <p> So what do we mean when we say nature based activities in Australia?
+                        Australia is globally renowned for its vast, pristine nature and its
+                        commitment to preserving unique ecosystems that shelter some of the
+                        world's rarest wildlife. When we say nature based activities in
+                        Australia, we are referring to, but not limited to birdwatching,
+                        bushwalking, going to beaches, botancial gardens, and so on.
+                        </p>
+                    </div>
+                </div>
+                <div class="pure-u-2-3">
+                    <div id="vis4" class="vis-container"></div>
+                    <p class="chart-reference">
+                        Source: <a href="https://traonline.tra.gov.au/webapi/jsf/dataCatalogueExplorer.xhtml" target="_blank"> TRA Online for students</a>
+                    </p>
+                </div>
+            </div>
+        <!-- end pure grid group -->
+        </div>
+
+        <!-- pure grid group -->
+        <div class="groups">
+            <div class="pure-u-1-1">
+                <h2>3. Protected Areas and Public Gardens</h2>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+
+        <div class="groups">
+            <!-- pure grid group -->
+            <div class="pure-g">
+                <div class="pure-u-1-2">
+                    <div class="description description-left">
+                        <div id="vis5" class="vis-container"></div>
+                        <p class="chart-reference">
+                            Source: <a href="https://www.dcceew.gov.au/sites/default/files/documents/dnp-annual-report-2024-25.pdf" target="_blank"> Director of National Parks Annual Report 2024-25</a>
+                        </p>
+                        <p>
+                        As seen above, there isn't much significant 
+                        change to the parks from 2020-21 to 2024-25 
+                        except for Uluru-Kata Tjuta National Park 
+                        which went from the fourth most popular park
+                        in 2020-21 to the second most popular park.
+                        </p>
+                    </div>
+                </div>
+                <div class="pure-u-1-2">
+                    <div class="description description-right">
+                        <div id="vis6" class="vis-container"></div>
+                        <p class="chart-reference">
+                            Source: <a href="https://www.dcceew.gov.au/sites/default/files/documents/dnp-annual-report-2024-25.pdf" target="_blank"> Director of National Parks Annual Report 2024-25</a>
+                        </p>
+                        <p> Over here we can see a most visual representation of 
+                        the number of visits to the parks in 2024-25 and as 
+                        seen above 43% of the people that are visiting Australia's
+                        national parks are going to Australian National Botanic 
+                        Gardens. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- end pure grid group -->
+        </div>
+
+        <div class="groups">
+            <!-- pure grid group -->
+            <div class="pure-g">
+                <div class="pure-u-2-3">
+                    <div class="description description-left">
+                        <div id="vis7" class="vis-container"></div>
+                        <p class="chart-reference">
+                            Source: <a href="https://www.environment.nsw.gov.au/sites/default/files/2026-04/NPWS_parks_visitation_survey_annual_report_fy24-25-optimised.pdf" target="_blank"> NSW National Parks and Wildlife Service</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="pure-u-1-3">
+                    <div class="description description-right"></div>
+                    <p> As one of the largest states in Australia, New South Wales has its own national parks and wildlife
+                        reserves that is worth looking at. The data reveals that during the 2024-25 period, the top twenty 
+                        most-visited parks each attracted well over a million visits, with iconic destinations like the Blue
+                        Mountains leading the country at nearly 8 million annual visits. This immense volume highlights just how
+                        heavily national parks capture both domestic and international tourism within Australia.
+
+                    </p>
+                </div>
+            </div>
+        <!-- end pure grid group -->
+        </div>
+
+        <!-- pure grid group -->
+        <div class="groups">
+            <div class="pure-u-1-1">
+                <h2>4. Wildlife-Based Tourism</h2>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+
+
+        <div class="groups">
+            <!-- pure grid group -->
+            <div class="pure-g">
+                <div class="pure-u-1-2">
+                    <div class="description description-left">
+                        <div id="vis8" class="vis-container"></div>
+                        <p class="chart-reference">
+                            Source: <a href="https://doi.org/10.15468/dl.hrgcys" target="_blank"> GBIF.org (26 October 2026) GBIF Occurrence Download</a>
+                        </p>
+                        <p>This map shows bird sighting as a common activity done by people in Australia, 
+                        across all states. It shows that New South Wales has the most bird sightings which 
+                        shares similar result to how previously there were more domestic trips to New 
+                        South Wales. 
+                        </p>
+                    </div>
+                </div>
+                <div class="pure-u-1-2">
+                    <div class="description description-right">
+                        <div id="vis9" class="vis-container"></div>
+                        <p class="chart-reference">
+                            Source: <a href="https://biocache.ala.org.au/occurrences/search?&q=lsid%3Ahttps%3A%2F%2Fbiodiversity.org.au%2Fafd%2Ftaxa%2F9a20c21d-2574-4ddd-bb5e-7fc96a6459f5&disableAllQualityFilters=true&fq=-basisOfRecord%3A%22FOSSIL_SPECIMEN%22+AND+-%28basisOfRecord%3A%22MATERIAL_SAMPLE%22+AND+contentTypes%3A%22Environmental+DNA%22%29&fq=-%28duplicate_status%3A%22ASSOCIATED%22+AND+duplicateType%3A%22DIFFERENT_DATASET%22%29&fq=-degreeOfEstablishment%3A%22cultivated%22+AND+-degreeOfEstablishment%3A%22captive%22&fq=-assertions%3ATAXON_MATCH_NONE+AND+-assertions%3AINVALID_SCIENTIFIC_NAME+AND+-assertions%3AUNKNOWN_KINGDOM+AND+-assertions%3ATAXON_SCOPE_MISMATCH+AND+-assertions%3ATAXON_HOMONYM&fq=-occurrenceStatus%3AABSENT&fq=-identificationVerificationStatus%3A%22needs_id%22+AND+-identificationVerificationStatus%3A%22verification+required%22&fq=-year%3A%5B*+TO+1700%5D&fq=-userAssertions%3A50001+AND+-userAssertions%3A50005&fq=-decimalLatitude%3A0+AND+-decimalLongitude%3A0+AND+-assertions%3A%22PRESUMED_SWAPPED_COORDINATE%22+AND+-assertions%3A%22COORDINATES_CENTRE_OF_STATEPROVINCE%22+AND+-assertions%3A%22COORDINATES_CENTRE_OF_COUNTRY%22+AND+-assertions%3A%22PRESUMED_NEGATED_LATITUDE%22+AND+-assertions%3A%22PRESUMED_NEGATED_LONGITUDE%22&fq=-spatiallyValid%3A%22false%22&fq=-outlierLayerCount%3A%5B3+TO+*%5D&fq=-coordinateUncertaintyInMeters%3A%5B10001+TO+*%5D&qc=-_nest_parent_%3A*" target="_blank"> Atlas of Living Australia occurrence download accessed on 26 October 2026 at 2:22:34 PM</a>
+                        </p>
+                        <p>Whale and dolphin watching on the other hand is more common around the outer areas of Australia, 
+                            which makes sense as it is closer to the ocean (the water) where these creatures live. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- end pure grid group -->
+        </div>
+
+
+        <div class="groups">
+            <!-- pure grid group -->
+            <div class="pure-g">
+                <div class="pure-u-1-2">
+                    <div class="description description-left">
+                        <div id="vis10" class="vis-container"></div>
+                        <p class="chart-reference">
+                            Source: <a href=" https://www.gbrmpa.gov.au/help/tourism-visitation-data#" target="_blank"> Great Barrier Reef Marine Park Authority</a>
+                        </p>
+                        <p>
+                            To examine specific regional impacts on nature-based tourism, the line chart 
+                            illustrates the total visitor volume to the Great Barrier Reef from 2017 through 
+                            recent years. <strong> The data clearly captures a dramatic, sharp collapse in visitation 
+                            around late 2020 and early 2021, where absolute numbers dropped to historic lows due to 
+                            severe pandemic border closures and lockdowns. Following this downturn, the region shows a
+                            resilent recovery with seasonal peaks steadily climbing back toward a baseline of roughly 
+                            500,000 to 700,000 quarterly visits. 
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="pure-u-1-2">
+                    <div class="description description-right">
+                        <div id="vis11" class="vis-container"></div>
+                        <p class="chart-reference">
+                            Source: <a href="https://www.tra.gov.au/en/tourism-industry-analysis/state-and-regional-sta/rtsa-2023-24#accordion-72a0f899cc-item-c99273f2ac" target="_blank"> Regional Tourism Satellite Account</a>
+                        </p>
+                        <p> 
+                            Shifting focus to regional spending habits, the bar chart 
+                            details tourism product consumption along the Australia 
+                            Coral Coast for the 2023-24 financial period. <strong> 
+                            The data reveals that long-distance passenger transportation, 
+                            takeaway and restaurant meals, and accommodation services
+                            constitute the top three largest tourism expenses in the 
+                            region, with transport leading at nearly 300 value units. 
+                            Conversely, specialised sectors such as education, gambling, 
+                            and local area transportation receive minimal direct financial 
+                            intake, highlighting that regional tourism revenue is overwhelmingly
+                            driven by essential transit, dining, and lodging infrastructure.
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- end pure grid group -->
+        </div>
+
+        <div class="groups"> 
+            <!-- pure grid group -->
+            <div class="pure-g">
+                <div class="pure-u-1-2">
+                    <h3> Conclusion</h2>
+                    <div class="description description-left">
+                        <p> In conclusion, nature-based activities serve as a 
+                            foundational pillar for both regional and national 
+                            tourism in Australia. <strong>The data across this 
+                            dashboard clearly demonstrates that while raw visitor 
+                            volumes are heavily concentrated in major states like 
+                            New South Wales and Victoria, smaller regions like 
+                            Tasmania rely far more critically on tourism for their 
+                            local economic output. Furthermore, regional hotspots like
+                            the Great Barrier Reef and the Coral Coast show resilient 
+                            post-pandemic recoveries, driven overwhelmingly by essential 
+                            transit, domestic dining, and lodging infrastructure. 
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="pure-u-1-2">
+                    <div class="description description-right">
+                        <div class="css-image2-container"></div>
+                        <p class="chart-reference">
+                            Source: Image from <a href=" https://northernterritory.com/uluru-and-surrounds/destinations/uluru" target="_blank"> Northern Territory</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- end pure grid group -->
+        </div>
+
+        <div class="pure-g">
+            <div class="pure-u-1-1 small-font">
+                <div class="chart-reference">
+                    <p>This visualisation is created by <a href="https://github.com/swuu0135/FIT3179"
+                        target="_blank">Sally Wu</a>. State Boundaries from <a href="https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_1_states_provinces.zip"> Natural Earth</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div> <!-- end page -->
+
+    <script type="text/javascript">
+
+        vegaEmbed('#vis1', '1_heat_map/chart1.json', { "actions": false });
+
+        vegaEmbed('#vis2', '2_choropleth_map/chart2.json', { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis3', '8_lollipop_chart/chart8.json', { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis4', '6_bump_chart/chart6.json', { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis5', '5_slope_chart/chart5.json', { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis6', '7_waffle_chart/chart7.json', { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis7', '4_horizontal_bar_chart/chart4.json', { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis8', '12_symbol_map/chart12.json', { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis9', '11_bin_map/chart11.json', { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis10', '3_line_chart/chart3.json', { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis11', '10_bar_chart/chart10.json', { "actions": false }).then(function (result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
 
     </script>
 </body>

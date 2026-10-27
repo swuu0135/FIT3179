@@ -1,30 +1,47 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
     "title": "Great Barrier Reef Visits",
-    "width":500,
+    "width":450,
     "height": 300,
+    "padding": {
+        "left": 30,
+        "right": 57
+    },
     "data": {
         "url": "3_line_chart/GBRMP Visitations-All.csv"
     },
-    "transform":[{
-        "calculate": "datum.Year + ' ' + datum.Quarter ", 
-        "as": "Timeline"
-    }],
+    "transform": [
+        {
+            "calculate": "datum.Quarter == 'Q1' ? datum.Year + '-01-01' : datum.Quarter == 'Q2' ? datum.Year + '-04-01' : datum.Quarter == 'Q3' ? datum.Year + '-07-01' : datum.Year + '-10-01'",
+            "as": "Timeline"
+        },
+        {
+            "calculate": "toDate(datum.Timeline)",
+            "as": "TimelineDate"
+        }
+    ],
    
     "mark": {"type": "line", "point": true},
     "encoding": {
         "x": {
-            "field": "Timeline", 
-            "type": "nominal",
-            "sort": ["2019 Jan-Mar", "2019 Apr-Jun", "2019 Jul-Sep", "2019 Oct-Dec", "2020 Jan-Mar", "2020 Apr-Jun", "2020 Jul-Sep", "2020 Oct-Dec"]
-            
+            "field": "TimelineDate",
+            "type": "temporal",
+            "sort": "ascending",
+            "axis": {
+                "format": "%d/%m/%Y"
+            }
         },
         "y": {
             "field": "Total Visits",
             "type": "quantitative"
         },
         "tooltip": [
-            {"field": "Timeline", "type":"nominal"},
+            {
+            "field": "TimelineDate",
+            "type": "temporal",
+            "format": "%d/%m/%Y",
+            "title": "Date"
+        },
             {"field": "Total Visits", "type": "quantitative"}
         ]
     }

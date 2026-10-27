@@ -1,9 +1,14 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
     "title": "Total Domestic Trips in Australia",
-    "width": 800, 
+    "padding": {
+        "left": 60,
+        "right": 20,
+        "bottom": 20
+    },
+    "width": 410, 
     "height": 400, 
-    "projection": {"type": "mercator"}, 
+    "projection": {"type": "mercator", "scale": 550, "center": [133, -27]}, 
     "layer":[
         {"data": {
             "url": "2_choropleth_map/ne_10m_admin_1_states_provinces.json",
@@ -34,7 +39,12 @@
         "encoding": {
             "color": {
                 "field": "Percentage_Share", 
-                "type": "quantitative"
+                "type": "quantitative", 
+                "legend":{
+                    "orient": "right",
+                    "direction": "vertical"
+                }
+                
             },
             "tooltip": [
                 {"field": "properties.name", "type": "nominal", "title": "State/Territory"},
@@ -42,8 +52,31 @@
                 {"field": "Trips_Thousands", "type": "quantitative", "title": "Trips"}
                 
             ]
+        }},
+        {"data": {
+            "url": "2_choropleth_map/ne_10m_admin_1_states_provinces.json",
+            "format": {"type": "topojson", "feature": "australia_states"}},
+        "transform": [
+        {
+            "calculate": "datum.properties.name == 'New South Wales' ? 'NSW' : datum.properties.name == 'Victoria' ? 'VIC' : datum.properties.name == 'Queensland' ? 'QLD' : datum.properties.name == 'Western Australia' ? 'WA' : datum.properties.name == 'South Australia' ? 'SA' : datum.properties.name == 'Tasmania' ? 'TAS' : datum.properties.name == 'Northern Territory' ? 'NT' : datum.properties.name == 'Australian Capital Territory' ? 'ACT' :'' ",
+            "as": "state_abbrev"
         }
-    }]
+        ],
+        "mark": {
+            "type": "text",
+            "fill": "#ffffff",
+            "stroke": "#111111",
+            "strokeWidth": 2,
+            "fontSize": 11, 
+            "fontWeight": "bold"
+        },
+        "encoding": {
+            "longitude": {"field": "properties.longitude", "type": "quantitative"},
+            "latitude": {"field": "properties.latitude", "type": "quantitative"},
+            "text": {"field": "state_abbrev", "type": "nominal"}
+        }}
+
+    ]
 
     
 }

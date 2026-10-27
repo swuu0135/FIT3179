@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-    "width":400,
-    "height": 300,
+    "width":450,
+    "height": 350,
     "title": "Tourism Consumption in Australia",
     "data": {
         "url": "1_heat_map/tourism_consumption.csv"

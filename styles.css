@@ -1,0 +1,107 @@
+body *{
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 900;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    color: #111111; 
+    margin: 20px 0;
+}
+
+h2{
+    font-size: 35px;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    color: #333333;
+}
+
+h3{
+    font-size: 30px;
+}
+
+body {
+    background-color: lightgray;
+}
+
+p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400; 
+} 
+
+.page {
+    width: 1300px;
+    background-color: white;
+    margin: auto;
+    padding: 50px;
+    padding-top: 35px;
+}
+
+.vis-container {
+    width: 100%;
+}
+
+.css-image1-container{
+    background-image: url('nature.jpg');
+    width: 95%;
+    height: 300px;
+    margin-left: 40px; 
+
+}
+
+.css-image2-container{
+    background-image: url('magestic_uluru.jpg');
+    width: 100%;
+    height: 400px; 
+    background-size: cover;
+    background-position: center;
+
+}
+
+.description h2,
+h1 {
+    margin-top: 0px;
+}
+
+
+
+.description-right {
+    padding-left: 20px;
+    margin-left: 40px;
+}
+
+.description-left {
+    padding-right: 20px;
+   
+
+}
+
+.pure-g {
+    margin-bottom: 40px;
+}
+
+.groups{
+    margin: 40px 0;
+    background-color: #f9f9f9; /* Light grey background */
+    border: 2px solid #2ecc71; /* Green border */
+    border-radius: 6px;
+    padding: 20px;
+
+}
+
+.chart-reference{
+    font-family: "Open Sans", sans-serif;
+    font-size: 13px; 
+    font-weight:400; 
+    color: #555555; 
+    margin-top: 8px;
+}
+
+.small-font {
+    font-size: 14px;
+}

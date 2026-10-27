@@ -1,8 +1,15 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
     "title": "Tourism shares",
-    "width":400,
-    "height": 300,
+    "width": 400,
+    "height": 365,
+    "padding": {
+        "left": 50, 
+        "right": 70,
+        "top": 10,
+        "bottom": 15
+    },
+    
     "data": {
         "url": "8_lollipop_chart/tourism_state_shares.csv"
     },
@@ -45,7 +52,8 @@
                 ],
                 "color": {
                     "field": "State",
-                    "type": "nominal"
+                    "type": "nominal",
+                    "legend": null
                 }
             }
         }

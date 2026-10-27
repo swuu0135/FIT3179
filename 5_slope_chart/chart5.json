@@ -1,14 +1,18 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
     "width":400,
-    "height": 300,
+    "height": 310,
+    "padding":{
+        "left": 50,
+        "right": 90
+    },
     "title": "Parks Australia Vistor Change by Parks",
     "data": {
         "url": "5_slope_chart/year_on_year_number_visits_by_park.csv"
     },
     "transform": [
         {
-            "fold": ["2020-21", "2022-23", "2023-24", "2024-25"],
+            "fold": ["2020-21", "2024-25"],
             "as": ["Year", "Vistors"]
         }
     ],
@@ -27,7 +31,25 @@
         }, 
         "color": {
             "field": "Park", 
-            "type": "nominal"
+            "type": "nominal",
+            "scale": {
+                "domain": [
+                "Australian National Botanic Gardens",
+                "Uluru-Kata Tjuta National Park",
+                "Booderee National Park",
+                "Kakadu National Park",
+                "Norfolk Island National Park",
+                "Christmas Island National Park"
+                ],
+                "range": ["#2b5c8f", "#d95f02", "#7570b3", "#e7298a", "#66a61e", "#e6ab02"]
+            },
+            "legend":{
+                "title": "National Park",
+                "orient": "none",
+                "legendX": 220,
+                "legendY": 40,
+                "labelLimit": 300
+            }
         }
 
     },

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Australia Coral Coast Tourism Consumption (2023-24)",
+  "width": 300,
+  "height": 300,
+  "data": {
+    "url": "10_bar_chart/coral_coast_tourism_consumption.csv"
+  },
+  "mark": "bar", 
+  "encoding": {
+    "x": {
+        "field": "Value", 
+        "type": "quantitative"
+        
+    },
+    "y": {
+        "field": "Tourism products", 
+        "type": "nominal",
+        "sort": "-x",
+        "axis":{
+          "labelLimit": 300
+        }
+    }
+  }
+}

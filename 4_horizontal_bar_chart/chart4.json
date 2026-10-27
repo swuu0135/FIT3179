@@ -1,5 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "title": "Most Visited Parks in 2024/25",
+    "width":600,
     "mark": "bar",
     "data": {
         "url": "4_horizontal_bar_chart/most_visited_parks.csv"
@@ -13,7 +15,8 @@
         "y": {
             "field": "Park",
             "type": "nominal",
-            "title": "Park"
+            "title": "Park",
+            "sort": "-x"
         }
     }
 }

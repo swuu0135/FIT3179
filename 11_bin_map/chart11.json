@@ -1,0 +1,107 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Whale and Dolphin Sightings",
+  "width": 410, 
+  "height": 450,
+   "padding":{
+    "left": 70, 
+    "right": 30
+  }, 
+  "projection": {"type": "mercator", "scale": 500, "center": [133, -27]}, 
+  "layer": [
+    {
+      "data": {
+        "url": "11_bin_map/ne_10m_admin_1_states_provinces.json",
+        "format": {
+          "type": "topojson",
+          "feature": "australia_states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ffffff",
+        "stroke": "#cccccc",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "11_bin_map/whaleanddolphinrecords.csv"
+      },
+      "transform": [
+        {
+          "filter": "isValid(datum.decimalLatitude) && isValid(datum.decimalLongitude)"
+        },
+        {
+          "bin": {"step": 0.5},
+          "field": "decimalLongitude",
+          "as": ["bin_lon_start", "bin_lon_end"]
+        },
+        {
+          "bin": {"step": 0.5},
+          "field": "decimalLatitude",
+          "as": ["bin_lat_start", "bin_lat_end"]
+        },
+        {
+          "aggregate": [{"op": "count", "as": "record_count"}],
+          "groupby": ["bin_lon_start", "bin_lon_end", "bin_lat_start", "bin_lat_end"]
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "opacity": 0.9,
+        "stroke": "#e0e0e0",
+        "strokeWidth": 0.2
+      },
+      "encoding": {
+        "longitude": {
+          "field": "bin_lon_start",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "bin_lon_end"
+        },
+        "latitude": {
+          "field": "bin_lat_start",
+          "type": "quantitative"
+        },
+        "latitude2": {
+          "field": "bin_lat_end"
+        },
+        "color": {
+          "field": "record_count",
+          "type": "quantitative",
+          "scale": {"scheme": "blues"},
+          "title": "Sightings"
+        },
+        "tooltip": [
+          {"field": "bin_lon_start", "type": "quantitative", "title": "Min Longitude"},
+          {"field": "bin_lat_start", "type": "quantitative", "title": "Min Latitude"},
+          {"field": "record_count", "type": "quantitative", "title": "Record Count"}
+        ]
+      }
+    },
+    {"data": {
+            "url": "2_choropleth_map/ne_10m_admin_1_states_provinces.json",
+            "format": {"type": "topojson", "feature": "australia_states"}},
+        "transform": [
+        {
+            "calculate": "datum.properties.name == 'New South Wales' ? 'NSW' : datum.properties.name == 'Victoria' ? 'VIC' : datum.properties.name == 'Queensland' ? 'QLD' : datum.properties.name == 'Western Australia' ? 'WA' : datum.properties.name == 'South Australia' ? 'SA' : datum.properties.name == 'Tasmania' ? 'TAS' : datum.properties.name == 'Northern Territory' ? 'NT' : datum.properties.name == 'Australian Capital Territory' ? 'ACT' :'' ",
+            "as": "state_abbrev"
+        }
+        ],
+        "mark": {
+            "type": "text",
+            "fill": "#ffffff",
+            "stroke": "#111111",
+            "strokeWidth": 2,
+            "fontSize": 11, 
+            "fontWeight": "bold"
+        },
+        "encoding": {
+            "longitude": {"field": "properties.longitude", "type": "quantitative"},
+            "latitude": {"field": "properties.latitude", "type": "quantitative"},
+            "text": {"field": "state_abbrev", "type": "nominal"}
+        }}
+  ]
+}

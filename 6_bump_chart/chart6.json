@@ -1,80 +1,99 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
     "title": "Nature-Based Activities Australia",
-    "width": 500,
+    "width": 400,
+    "height": 300,
+    "padding":{
+        "left": 50,
+        "right": 75
+    },
     "data": {
         "url": "6_bump_chart/table_2026-10-13_16-26-51.csv"
-    }, 
+    },
     "transform": [
         {
             "filter": "datum['Calendar year'] != 'Total' && datum['Activities'] != null && datum['Activities'] != ''"
         },
         {
-            "window": [{"op": "rank", "as": "rank"}], 
-            "sort": [{"field": "Count", "order": "descending"}], 
-            "groupby": ["Calendar year"]
+            "window": [
+                {
+                    "op": "rank",
+                    "as": "rank"
+                }
+            ],
+            "sort": [
+                {
+                    "field": "Count",
+                    "order": "descending"
+                }
+            ],
+            "groupby": [
+                "Calendar year"
+            ]
         }
     ],
     "layer": [
         {
             "mark": {
                 "type": "line"
-            
             },
-            "encoding":{
+            "encoding": {
                 "x": {
-                    "field": "Calendar year", 
-                    "type": "ordinal", 
-                    "title": "Year", 
+                    "field": "Calendar year",
+                    "type": "ordinal",
+                    "title": "Year",
                     "sort": "ascending",
                     "axis": {
                         "labelAngle": 0
                     }
-                }, 
+                },
                 "y": {
-                    "field": "rank", 
-                    "type": "quantitative", 
-                    "axis":{
+                    "field": "rank",
+                    "type": "quantitative",
+                    "axis": {
                         "title": "Rank",
                         "labelAngle": 0
                     },
-                    "scale": {"reverse": true}
-
+                    "scale": {
+                        "reverse": true
+                    }
                 },
                 "color": {
-                    "field": "Activities", 
-                    "type": "nominal", 
+                    "field": "Activities",
+                    "type": "nominal",
                     "title": "Activity"
-                  
                 }
             }
-        
-        }, 
+        },
         {
             "mark": {
                 "type": "point"
             },
-            "encoding":{
+            "encoding": {
                 "x": {
-                    "field": "Calendar year", 
-                    "type": "ordinal", 
+                    "field": "Calendar year",
+                    "type": "ordinal",
                     "title": "Year"
-                }, 
+                },
                 "y": {
-                    "field": "rank", 
-                    "type": "quantitative", 
+                    "field": "rank",
+                    "type": "quantitative",
                     "title": "Rank",
-                    "scale": {"reverse": true}
+                    "scale": {
+                        "reverse": true
+                    }
                 },
                 "color": {
-                    "field": "Activities", 
-                    "type": "nominal", 
-                    "title": "Activity"
+                    "field": "Activities",
+                    "type": "nominal",
+                    "title": "Activity",
+                    "legend": {
+                        "direction": "vertical",
+                        "orient": "left",
+                        "labelLimit": 300
+                    }
                 }
             }
         }
     ]
-        
-    
-
 }

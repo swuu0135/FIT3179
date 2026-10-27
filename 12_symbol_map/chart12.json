@@ -1,0 +1,104 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Number of Birds Sightings by State",
+  "width": 410,
+  "height": 450,
+  "padding":{
+    "left": 70, 
+    "right": 30
+  },
+  "projection": {
+    "type": "mercator",
+    "scale": 500,
+    "center": [
+      133,
+      -27
+    ]
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "12_symbol_map/ne_10m_admin_1_states_provinces.json",
+        "format": {
+          "type": "topojson",
+          "feature": "australia_states"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "gray",
+        "stroke": "white"
+      }
+    },
+    {
+      "data": {
+        "url": "12_symbol_map/birds_by_state.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "tooltip": {
+          "content": "data"
+        }
+      },
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "Count",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "stateProvince",
+          "type": "nominal",
+          "legend": {
+            "orient": "bottom-left",
+            "labelLimit": 300
+          }
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "2_choropleth_map/ne_10m_admin_1_states_provinces.json",
+        "format": {
+          "type": "topojson",
+          "feature": "australia_states"
+        }
+      },
+      "transform": [
+        {
+          "calculate": "datum.properties.name == 'New South Wales' ? 'NSW' : datum.properties.name == 'Victoria' ? 'VIC' : datum.properties.name == 'Queensland' ? 'QLD' : datum.properties.name == 'Western Australia' ? 'WA' : datum.properties.name == 'South Australia' ? 'SA' : datum.properties.name == 'Tasmania' ? 'TAS' : datum.properties.name == 'Northern Territory' ? 'NT' : datum.properties.name == 'Australian Capital Territory' ? 'ACT' :'' ",
+          "as": "state_abbrev"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fill": "white",
+        "stroke": "black",
+        "strokeWidth": 2,
+        "fontSize": 11,
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "properties.longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "properties.latitude",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state_abbrev",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}
