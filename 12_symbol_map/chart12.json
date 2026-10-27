@@ -35,10 +35,7 @@
         "url": "12_symbol_map/birds_by_state.csv"
       },
       "mark": {
-        "type": "circle",
-        "tooltip": {
-          "content": "data"
-        }
+        "type": "circle"
       },
       "encoding": {
         "longitude": {
@@ -49,6 +46,18 @@
           "field": "latitude",
           "type": "quantitative"
         },
+        "tooltip":[
+              {
+                "field": "Count",
+                "type": "quantitative",
+                "title": "Number of Sightings"
+              },
+              {
+               "field": "stateProvince",
+                "type": "nominal",
+               "title": "State"
+              }
+            ],
         "size": {
           "field": "Count",
           "type": "quantitative",
@@ -56,6 +65,8 @@
             "type": "threshold",
             "domain": [2383514, 4343707],
             "range": [100, 300, 600]
+              
+            
           },
           "legend": {
             "title": "Number of Sightings"
