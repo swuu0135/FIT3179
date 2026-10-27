@@ -17,6 +17,19 @@
             "type": "nominal",
             "title": "Park",
             "sort": "-x"
-        }
+        },
+        "tooltip": [
+    {
+        "field": "Park",
+        "type": "nominal",
+        "title": "Park"
+    },
+    {
+        "field": "2024/25 visits",
+        "type": "quantitative",
+        "title": "Visits",
+        "format": ","
+    }
+    ]
     }
 }

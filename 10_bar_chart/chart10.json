@@ -6,20 +6,35 @@
   "data": {
     "url": "10_bar_chart/coral_coast_tourism_consumption.csv"
   },
-  "mark": "bar", 
+  "mark": "bar",
   "encoding": {
     "x": {
-        "field": "Value", 
-        "type": "quantitative"
-        
+      "field": "Value",
+      "type": "quantitative",
+      "axis": {
+        "title": "Tourism Consumption ($M)"
+      }
     },
     "y": {
-        "field": "Tourism products", 
+      "field": "Tourism products",
+      "type": "nominal",
+      "sort": "-x",
+      "axis": {
+        "labelLimit": 300
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Tourism products",
         "type": "nominal",
-        "sort": "-x",
-        "axis":{
-          "labelLimit": 300
-        }
-    }
+        "title": "Tourism products"
+      },
+      {
+        "field": "Value",
+        "type": "quantitative",
+        "title": "Tourism Consumption($M)",
+        "format": ","
+      }
+    ]
   }
 }

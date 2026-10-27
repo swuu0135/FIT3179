@@ -12,6 +12,17 @@
   "data": {
     "url": "7_waffle_chart/waffle_grid.csv"
   },
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "count",
+          "as": "Proportion"
+        }
+      ],
+      "groupby": ["Park"]
+    }
+  ],
   "layer": [
     {
       "mark": {
@@ -66,7 +77,13 @@
             "field": "Park",
             "type": "nominal",
             "title": "Park"
+          },
+          {
+            "field": "Proportion",
+            "type": "quantitative",
+            "title": "Proportion (%)"
           }
+          
         ]
       }
     },
@@ -74,13 +91,25 @@
       "mark": {
         "type": "text",
         "x": 400,
-        "y": 300,
+        "y": 250,
         "fontSize": 30
       },
       "encoding": {
         "text": {
-          "value": "43%"
+          "value": "42%"
         }
+      }
+    },
+    {
+      "mark": {
+      "type": "rule",
+      "stroke": "#111111",
+      "strokeWidth": 3
+      },
+      "encoding": {
+      "x": {"value": 230},     
+      "x2": {"value": 340},     
+      "y": {"value": 250}     
       }
     }
   ],

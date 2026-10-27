@@ -92,10 +92,10 @@
         ],
         "mark": {
             "type": "text",
-            "fill": "#ffffff",
+            "color": "black",
             "stroke": "#111111",
-            "strokeWidth": 2,
-            "fontSize": 11, 
+            "strokeWidth": 1.2,
+            "fontSize": 12,
             "fontWeight": "bold"
         },
         "encoding": {

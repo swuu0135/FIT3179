@@ -1,12 +1,13 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
     "title": "Great Barrier Reef Visits",
-    "width":450,
+    "width": 450,
     "height": 300,
     "padding": {
         "left": 30,
         "right": 57
     },
+   
     "data": {
         "url": "3_line_chart/GBRMP Visitations-All.csv"
     },
@@ -20,15 +21,18 @@
             "as": "TimelineDate"
         }
     ],
-   
-    "mark": {"type": "line", "point": true},
+    "mark": {
+        "type": "line",
+        "point": true
+    },
     "encoding": {
         "x": {
             "field": "TimelineDate",
             "type": "temporal",
             "sort": "ascending",
             "axis": {
-                "format": "%d/%m/%Y"
+                "format": "%d/%m/%Y",
+                "title": "Date"
             }
         },
         "y": {
@@ -37,12 +41,15 @@
         },
         "tooltip": [
             {
-            "field": "TimelineDate",
-            "type": "temporal",
-            "format": "%d/%m/%Y",
-            "title": "Date"
-        },
-            {"field": "Total Visits", "type": "quantitative"}
+                "field": "TimelineDate",
+                "type": "temporal",
+                "format": "%d/%m/%Y",
+                "title": "Date"
+            },
+            {
+                "field": "Total Visits",
+                "type": "quantitative"
+            }
         ]
     }
 }
