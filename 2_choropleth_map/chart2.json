@@ -1,13 +1,13 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
     "title": "Total Domestic Trips in Australia",
+    "width": 410, 
+    "height": 400, 
     "padding": {
         "left": 60,
         "right": 20,
         "bottom": 20
     },
-    "width": 410, 
-    "height": 400, 
     "projection": {"type": "mercator", "scale": 550, "center": [133, -27]}, 
     "layer":[
         {"data": {
